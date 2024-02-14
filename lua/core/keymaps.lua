@@ -1,10 +1,9 @@
-vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', { desc = 'disable word highlight'})
 local wk = require("which-key")
 
--- netrw --
-wk.register { ["<leader>e"] = { "Explorer" }}
-vim.keymap.set('n', '<leader>ee', ':Lexplore<CR>')
-vim.keymap.set('n', '<leader>ec', ':Lexplore %:p:h<CR>')
+vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', { desc = 'disable word highlight'})
+vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'toogle terminal'})
+
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- telescope --
 local bi = require("telescope.builtin")
@@ -19,6 +18,15 @@ wk.register({
         b = { bi.buffers, "find buffers" },
     },
 },{ prefix = "<leader>"})
+
+-- toggleterm --
+--local tt = require("toggleterm")
+--wk.register({
+--    t = {
+--        desc = "Toggleterm",
+--        t = { tt.toggle(), "toggle terminal" }
+--    },
+--},{ prefix = "leader" })
 
 -- lsp --
 local M = {}
@@ -37,3 +45,4 @@ M.map_lsp_keybinds = function(buffer_number)
     },{ prefix = "<leader>" })
 end
 return M
+

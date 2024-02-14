@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Enable relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -63,10 +67,3 @@ vim.opt.virtualedit = "block"
 
 vim.opt.inccommand = "split"
 
-
--- setup 'netrw'
-vim.g.netrw_winsize = 20
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 1
