@@ -19,15 +19,6 @@ wk.register({
     },
 },{ prefix = "<leader>"})
 
--- toggleterm --
---local tt = require("toggleterm")
---wk.register({
---    t = {
---        desc = "Toggleterm",
---        t = { tt.toggle(), "toggle terminal" }
---    },
---},{ prefix = "leader" })
-
 -- lsp --
 local M = {}
 M.map_lsp_keybinds = function(buffer_number)
