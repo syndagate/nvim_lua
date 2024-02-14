@@ -2,6 +2,10 @@ local wk = require("which-key")
 
 vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', { desc = 'disable word highlight'})
 vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'toogle terminal'})
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'close', silent = false })
+vim.keymap.set('n', '<leader>s', '<cmd>w<cr>', { desc = 'save', silent = false })
+vim.keymap.set('n', '<leader>z', '<cmd>wq<cr>', { desc = 'save and close', silent = false })
+
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
