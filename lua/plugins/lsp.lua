@@ -114,6 +114,7 @@ return {
                     formatting.prettierd,
                     formatting.stylua,
                     formatting.ocamlformat,
+                    formatting.phpcsfixer
                 },
             })
 

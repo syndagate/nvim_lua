@@ -20,6 +20,8 @@ vim.keymap.set("n", "<M-l>", "<C-w>l") -- switch to right split window
 vim.keymap.set("n", "<M-Left>", "<C-w>h") -- switch to left split window
 vim.keymap.set("n", "<M-h>", "<C-w>h") -- switch to left split window
 
+-- git-blame --
+vim.keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
 
 vim.keymap.set("n", "<M-Up>", "<C-w>k") -- switch to upper split window
 vim.keymap.set("n", "<M-k>", "<C-w>k") -- switch to upper split window
