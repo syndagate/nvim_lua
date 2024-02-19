@@ -2,9 +2,17 @@ local wk = require("which-key")
 
 vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', { desc = 'disable word highlight'})
 vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'toogle terminal'})
-vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'close', silent = false })
+vim.keymap.set('n', '<leader>q', '<cmd>q!<cr>', { desc = 'close', silent = false })
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'save', silent = false })
 vim.keymap.set('n', '<leader>z', '<cmd>wq<cr>', { desc = 'save and close', silent = false })
+vim.keymap.set("n", "gx", ":!open <c-r><c-a><CR>", { desc = "open URL under cursor", silent = true })
+
+-- Terminal
+function _G.set_terminal_keymaps()
+    vim.keymap.set('t', '<esc>', "<C-\\><C-n>", { buffer = 0 })
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- Split window management
 vim.keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -19,15 +27,15 @@ vim.keymap.set("n", "<M-Right>", "<C-w>l") -- switch to right split window
 vim.keymap.set("n", "<M-l>", "<C-w>l") -- switch to right split window
 vim.keymap.set("n", "<M-Left>", "<C-w>h") -- switch to left split window
 vim.keymap.set("n", "<M-h>", "<C-w>h") -- switch to left split window
-
--- git-blame --
-vim.keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
-
 vim.keymap.set("n", "<M-Up>", "<C-w>k") -- switch to upper split window
 vim.keymap.set("n", "<M-k>", "<C-w>k") -- switch to upper split window
 vim.keymap.set("n", "<M-Down>", "<C-w>j") -- switch to lower split window
 vim.keymap.set("n", "<M-j>", "<C-w>j") -- switch to lower split window
 
+-- git-blame --
+vim.keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+
+-- nvim-tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 vim.keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file explorer
 vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
