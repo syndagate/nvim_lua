@@ -83,13 +83,13 @@ return {
 
             -- if client.server_capabilities.codeLensProvider then
             -- 	vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
-                -- 		buffer = buffer_number,
-                -- 		callback = vim.lsp.codelens.refresh,
-                -- 		desc = "LSP: Refresh code lens",
-                -- 		group = vim.api.nvim_create_augroup("codelens", { clear = true }),
-                -- 	})
-                -- end
-            end
+            --     		buffer = buffer_number,
+            --     		callback = vim.lsp.codelens.refresh,
+            --     		desc = "LSP: Refresh code lens",
+            --     		group = vim.api.nvim_create_augroup("codelens", { clear = true }),
+            --     	})
+            --     end
+            -- end
 
             -- Iterate over our servers and set them up
             for name, config in pairs(servers) do
@@ -127,5 +127,6 @@ return {
                     border = "rounded",
                 },
             })
-        end,
-    }
+        end
+    end,
+}
