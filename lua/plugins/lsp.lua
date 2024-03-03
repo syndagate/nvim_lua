@@ -12,9 +12,14 @@ return {
             },
         })
         require("mason-lspconfig").setup({
-            automatic_installation = {},
+            automatic_installation = true,
         })
         require("lspconfig").phpactor.setup{
+            on_attach = function(_, buffer_number)
+                map_lsp_keybinds(buffer_number)
+            end,
+        }
+        require("lspconfig").eslint.setup{
             on_attach = function(_, buffer_number)
                 map_lsp_keybinds(buffer_number)
             end,
