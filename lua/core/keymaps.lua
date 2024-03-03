@@ -43,7 +43,7 @@ wk.register({
     },
 },{ prefix = "<leader>"})
 
--- git-blame --
+-- git --
 wk.register({
     g = {
         desc = "Git",
@@ -51,7 +51,7 @@ wk.register({
         s = { "<cmd>TermExec cmd=\"git status\"<cr>", "status" },
         l = { "<cmd>TermExec cmd=\"git log\"<cr>", "log" },
     },
-})
+},{ prefix = "<leader>"})
 
 -- nvim-tree
 wk.register({
