@@ -3,7 +3,7 @@ local wk = require("which-key")
 vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', { desc = 'disable word highlight'})
 vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'toogle terminal'})
 vim.keymap.set('n', '<leader>q', '<cmd>q!<cr>', { desc = 'close', silent = false })
-vim.keymap.set('n', '<leader>Q', '<cmd>qa!<cr>', { desc = 'close', silent = false })
+vim.keymap.set('n', '<leader>Q', '<cmd>qa!<cr>', { desc = 'close all', silent = false })
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'save', silent = false })
 vim.keymap.set('n', '<leader>z', '<cmd>wq<cr>', { desc = 'save and close', silent = false })
 vim.keymap.set("n", "gx", ":!open <c-r><c-a><CR>", { desc = "open URL under cursor", silent = true })
@@ -33,13 +33,35 @@ vim.keymap.set("n", "<M-k>", "<C-w>k") -- switch to upper split window
 vim.keymap.set("n", "<M-Down>", "<C-w>j") -- switch to lower split window
 vim.keymap.set("n", "<M-j>", "<C-w>j") -- switch to lower split window
 
+-- buffer handling
+wk.register({
+    b = {
+        desc = "Buffer actions",
+        n = { "<cmd>bn<cr>", "switch to next buffer" },
+        p = { "<cmd>bp<cr>", "switch to previous buffer" },
+        d = { "<cmd>bd<cr>", "delete/close buffer" },
+    },
+},{ prefix = "<leader>"})
+
 -- git-blame --
-vim.keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+wk.register({
+    g = {
+        desc = "Git",
+        b = { "<cmd>GitBlameToggle<cr>", "toogle blame" },
+        s = { "<cmd>TermExec cmd=\"git status\"<cr>", "status" },
+        l = { "<cmd>TermExec cmd=\"git log\"<cr>", "log" },
+    },
+})
 
 -- nvim-tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-vim.keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file explorer
-vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
+wk.register({
+    e = {
+        desc = "Tree",
+        e = { "<cmd>NvimTreeToggle<cr>", "open nvim tree" },
+        r = { "<cmd>NvimTreeFocus<cr>", "focus nvim tree" },
+        f = { "<cmd>NvimTreeFindFile<cr>", "find file in nvim tree" },
+    },
+},{ prefix = "<leader>" })
 
 -- telescope --
 local bi = require("telescope.builtin")
