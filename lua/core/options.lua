@@ -67,3 +67,21 @@ vim.opt.virtualedit = "block"
 
 vim.opt.inccommand = "split"
 
+-- Mapper function for easy inspect tables
+function P(v)
+    print(vim.inspect(v))
+    return v
+end
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank({
+            timeout = 250,
+        })
+    end,
+})

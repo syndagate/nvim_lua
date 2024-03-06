@@ -14,6 +14,11 @@ return {
         require("mason-lspconfig").setup({
             automatic_installation = true,
         })
+        require("lspconfig").gopls.setup{
+            on_attach = function(_, buffer_number)
+                map_lsp_keybinds(buffer_number)
+            end,
+        }
         require("lspconfig").phpactor.setup{
             on_attach = function(_, buffer_number)
                 map_lsp_keybinds(buffer_number)
@@ -57,18 +62,29 @@ return {
         require("lspconfig").lua_ls.setup{
             settings = {
                 Lua = {
+                    runtime = { version = "LuaJIT" },
                     diagnostics = {
                         globals = {
                             'vim',
                             'require',
                         },
                     },
-                    workspace = { checkThirdParty = false },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            "${3rd}/luv/library",
+                            unpack(vim.api.nvim_get_runtime_file('', true)),
+                        },
+                    },
                     telemetry = { enabled = false },
                 },
             },
             on_attach = function(_, buffer_number)
                 map_lsp_keybinds(buffer_number)
+            end,
+            config = function()
+                local capabilities = vim.lsp.protocol.make_client_capabilities()
+                capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
             end,
         }
     end,
