@@ -20,9 +20,9 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 wk.register({
     t = {
         desc = "Terminal",
-        f = {"<cmd>ToggleTerm<cr>", "open a float terminal"},
-        b = {"<cmd>ToggleTerm direction=horizontal<cr>", "open a terminal at the bottom"},
-        r = {"<cmd>ToggleTerm direction=vertical<cr>", "open a terminal to the right"},
+        f = {"<cmd>ToggleTerm direction=float<cr>", "open a float terminal"},
+        b = {"<cmd>ToggleTerm direction=horizontal size=80<cr>", "open a terminal at the bottom"},
+        r = {"<cmd>ToggleTerm direction=vertical size=80<cr>", "open a terminal to the right"},
     }
 },{ prefix = "<leader>" })
 
